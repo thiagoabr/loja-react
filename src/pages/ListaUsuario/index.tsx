@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import style from './ListaUsuario.module.scss';
 
-function ListaUsuarios() {
+export default function ListaUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    api.get('/usuarios')
+    api
+      .get('/usuarios')
       .then((response) => setUsuarios(response.data))
       .catch((error) => console.error('Erro ao buscar usuários', error));
   }, []);
@@ -37,5 +38,3 @@ function ListaUsuarios() {
     </div>
   );
 }
-
-export default ListaUsuarios;

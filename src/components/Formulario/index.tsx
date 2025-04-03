@@ -5,9 +5,9 @@ import style from './Formulario.module.scss';
 
 class Formulario extends React.Component {
   state = {
-    nome: "",
-    email: "",
-    senha: ""
+    nome: '',
+    email: '',
+    senha: '',
   };
 
   async adicionarUsuario(evento: React.FormEvent<HTMLElement>) {
@@ -17,13 +17,13 @@ class Formulario extends React.Component {
       const response = await axios.post('http://localhost:3000/usuarios', {
         nome: this.state.nome,
         email: this.state.email,
-        senha: this.state.senha
+        senha: this.state.senha,
       });
 
       console.log('Usuário cadastrado com sucesso:', response.data);
-      
+
       // Limpa o formulário após cadastrar
-      this.setState({ nome: "", email: "", senha: "" });
+      this.setState({ nome: '', email: '', senha: '' });
 
       alert('Usuário cadastrado com sucesso!');
     } catch (error) {
@@ -34,39 +34,42 @@ class Formulario extends React.Component {
 
   render() {
     return (
-      <form className={style.novoUsuario} onSubmit={this.adicionarUsuario.bind(this)}>
+      <form
+        className={style.novoUsuario}
+        onSubmit={this.adicionarUsuario.bind(this)}
+      >
         <div className={style.inputContainer}>
-          <label htmlFor="nome">Nome usuário</label>
+          <label htmlFor='nome'>Nome usuário</label>
           <input
-            type="text"
-            name="nome"
-            id="nome"
+            type='text'
+            name='nome'
+            id='nome'
             value={this.state.nome}
             onChange={(evento) => this.setState({ nome: evento.target.value })}
-            placeholder="Nome do Usuário"
-            required
-          />
-        </div>
-        
-        <div className={style.inputContainer}>
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={this.state.email}
-            onChange={(evento) => this.setState({ email: evento.target.value })}
-            placeholder="E-mail do Usuário"
+            placeholder='Nome do Usuário'
             required
           />
         </div>
 
         <div className={style.inputContainer}>
-          <label htmlFor="senha">Senha</label>
+          <label htmlFor='email'>E-mail</label>
           <input
-            type="password"
-            name="senha"
-            id="senha"
+            type='email'
+            name='email'
+            id='email'
+            value={this.state.email}
+            onChange={(evento) => this.setState({ email: evento.target.value })}
+            placeholder='E-mail do Usuário'
+            required
+          />
+        </div>
+
+        <div className={style.inputContainer}>
+          <label htmlFor='senha'>Senha</label>
+          <input
+            type='password'
+            name='senha'
+            id='senha'
             value={this.state.senha}
             onChange={(evento) => this.setState({ senha: evento.target.value })}
             required

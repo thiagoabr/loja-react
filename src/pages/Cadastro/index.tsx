@@ -1,14 +1,13 @@
 import Formulario from '../../components/Formulario';
-import Menu from '../../components/Menu/menu';
+import Menu from '../../components/Menu';
 
-function Cadastro() {
+export default function Cadastro() {
   return (
     <div>
       <h1>Cadastro de Usuários</h1>
-      <Menu/>
+      <Menu />
       <Formulario />
     </div>
   );
 }
 
-export default Cadastro;
