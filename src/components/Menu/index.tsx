@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Menu.module.scss';
 
-export default function Menu(){
+export default function Menu() {
   return (
     <nav className={styles.menu}>
       <ul>
@@ -9,10 +9,16 @@ export default function Menu(){
           <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to='/cadastro'>Cadastrar Usuário</Link>
+          <Link to='/usuarios/cadastro'>Cadastrar Usuário</Link>
         </li>
         <li>
           <Link to='/usuarios'>Lista de Usuários</Link>
+        </li>
+        <li>
+          <Link to='/produtos/cadastro'>Cadastrar Produto</Link>
+        </li>
+        <li>
+          <Link to='/produtos'>Lista de Produtos</Link>
         </li>
       </ul>
     </nav>

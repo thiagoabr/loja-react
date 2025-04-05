@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from '../components/Menu';
-import Formulario from '../components/Formulario';
-import ListaUsuarios from './ListaUsuario';
+import CadastroUsuario from '../pages/Usuario/CadastroUsuario';
+import ListaUsuarios from '../pages/Usuario/ListaUsuario';
+import CadastroProduto from '../pages/Produto/CadastroProduto';
+import ListaProdutos from '../pages/Produto/ListaProduto';
 
 export default function App() {
   return (
@@ -10,11 +12,13 @@ export default function App() {
         <Menu />
         <div>
           <h1>Bem-vindo à nossa Loja React!</h1>
-          <p>Gerencie usuários de forma simples e eficiente.</p>
+          <p>Gerencie usuários e produtos de forma simples e eficiente.</p>
         </div>
         <Routes>
-          <Route path='/cadastro' element={<Formulario />} />
+          <Route path='/usuarios/cadastro' element={<CadastroUsuario />} />
           <Route path='/usuarios' element={<ListaUsuarios />} />
+          <Route path='/produtos/cadastro' element={<CadastroProduto />} />
+          <Route path='/produtos' element={<ListaProdutos />} />
         </Routes>
       </div>
     </Router>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Botao from '../Botao';
 import style from './Formulario.module.scss';
-import { Usuario } from '../../types/Usuario';
+import { Usuario } from '../../types/usuario';
 
 export default function Formulario() {
   const [usuario, setUsuario] = useState<Usuario>({
