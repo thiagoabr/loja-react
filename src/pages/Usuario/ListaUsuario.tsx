@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
-import style from './ListaUsuario.module.scss';
+import style from './Usuario.module.scss';
 
 export default function ListaUsuarios() {
   const [usuarios, setUsuarios] = useState([]);

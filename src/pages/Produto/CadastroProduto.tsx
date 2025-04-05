@@ -13,14 +13,14 @@ const camposProduto = [
 ];
 
 export default function CadastroProduto() {
-  const [produto, setProduto] = useState<Produto>({ nome: '',valor: 0,quantidade: 0,descricao: '',categoria: '' });
+  const [produto, setProduto] = useState<Produto>({ nome: '',valor: 0, quantidade: 0, descricao: '',categoria: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:3000/produtos', produto);
       alert('Produto cadastrado!');
-      setProduto({ nome: '',valor: 0,quantidade: 0,descricao: '',categoria: '' });
+      setProduto({ nome: '',valor: 0, quantidade: 0, descricao: '', categoria: '' });
     } catch (err) {
       alert('Erro ao cadastrar produto');
     }

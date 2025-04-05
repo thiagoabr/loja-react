@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import style from './ListaProduto.module.scss';
+import style from './Produto.module.scss';
 import { Produto } from '../../types/produto';
 import { api } from '../../services/api';
+import { formatarMoeda } from '../../utils/formataMoeda';
 
 export default function ListaProduto() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
-
 
   useEffect(() => {
     api
@@ -33,12 +32,7 @@ export default function ListaProduto() {
             {produtos.map((produto: any) => (
               <tr key={produto.id}>
                 <td>{produto.nome}</td>
-                <td>
-                  {produto.valor.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL'
-                  })}
-                </td>
+                <td>{formatarMoeda(produto.valor)}</td>
                 <td>{produto.quantidade}</td>
                 <td>{produto.descricao}</td>
                 <td>{produto.categoria || '-'}</td>
