@@ -1,16 +1,25 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
 import style from './Usuario.module.scss';
+import { listarUsuarios } from '../../services/usuario.service';
+import { Usuario } from '../../types/usuario.type';
 
 export default function ListaUsuarios() {
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
   useEffect(() => {
-    api
-      .get('/usuarios')
-      .then((response) => setUsuarios(response.data))
-      .catch((error) => console.error('Erro ao buscar usuários', error));
+    async function carregarUsuarios() {
+      try {
+        const response = await listarUsuarios();
+        setUsuarios(response);
+      } catch (error) {
+        alert('Erro ao carregar usuários');
+        console.error(error);
+      }
+    }
+
+    carregarUsuarios();
   }, []);
+
 
   return (
     <div className={style.listaUsuarios}>

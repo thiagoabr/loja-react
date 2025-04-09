@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import FormularioBase from '../../components/FormularioBase';
-import { Produto } from '../../types/produto';
-import { CampoFormulario } from '../../types/formularioBase';
+import { Produto } from '../../types/produto.types';
+import { CampoFormulario } from '../../types/formularioBase.type';
+import { cadastrarProduto } from '../../services/produto.service';
 
 const camposProduto = [
   { nome: 'nome', tipo: 'text', label: 'Nome do Produto', required: true },
@@ -15,10 +15,10 @@ const camposProduto = [
 export default function CadastroProduto() {
   const [produto, setProduto] = useState<Produto>({ nome: '',valor: 0, quantidade: 0, descricao: '',categoria: '' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (evento: React.FormEvent) => {
+    evento.preventDefault();
     try {
-      await axios.post('http://localhost:3000/produtos', produto);
+      await cadastrarProduto(produto);
       alert('Produto cadastrado!');
       setProduto({ nome: '',valor: 0, quantidade: 0, descricao: '', categoria: '' });
     } catch (err) {

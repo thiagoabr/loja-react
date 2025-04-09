@@ -5,6 +5,7 @@ import ListaUsuarios from '../pages/Usuario/ListaUsuario';
 import CadastroProduto from '../pages/Produto/CadastroProduto';
 import ListaProdutos from '../pages/Produto/ListaProduto';
 import Autenticacao from '../pages/Autenticacao';
+import RotaPrivada from '../components/RotaPrivada';
 
 export default function App() {
   return (
@@ -17,10 +18,32 @@ export default function App() {
         </div>
         <Routes>
           <Route path='/' element={<Autenticacao />} />
-          <Route path='/usuarios/cadastro' element={<CadastroUsuario />} />
-          <Route path='/usuarios' element={<ListaUsuarios />} />
-          <Route path='/produtos/cadastro' element={<CadastroProduto />} />
-          <Route path='/produtos' element={<ListaProdutos />} />
+          
+          <Route path="/usuarios/cadastro" element={
+            <RotaPrivada>
+              <CadastroUsuario />
+            </RotaPrivada>
+          } />
+
+          <Route path="/usuarios" element={
+            <RotaPrivada>
+              <ListaUsuarios />
+            </RotaPrivada>
+          } />
+
+          <Route path="/produtos/cadastro" element={
+            <RotaPrivada>
+              <CadastroProduto />
+            </RotaPrivada>
+          } />
+
+          <Route path="/produtos" element={
+            <RotaPrivada>
+              <ListaProdutos />
+            </RotaPrivada>
+          } />
+
+          <Route path="*" element={<Autenticacao />} /> {/* fallback */}
         </Routes>
       </div>
     </Router>

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './FormularioBase.module.scss';
 import Botao from '../Botao';
-import { PropsFormulario } from '../../types/formularioBase';
+import { PropsFormulario } from '../../types/formularioBase.type';
 
 export default function FormularioBase<T>({
   campos,

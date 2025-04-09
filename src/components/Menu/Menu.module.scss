@@ -23,4 +23,15 @@
       }
     }
   }
+  
+  .logoutButton {
+    background: none;
+    border: none;
+    color: #f00;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+  
 }

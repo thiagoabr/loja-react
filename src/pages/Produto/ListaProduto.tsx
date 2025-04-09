@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './Produto.module.scss';
-import { Produto } from '../../types/produto';
-import { api } from '../../services/api';
+import { Produto } from '../../types/produto.types';
+import { api } from '../../services/api.service';
 import { formatarMoeda } from '../../utils/formataMoeda';
 
 export default function ListaProduto() {
