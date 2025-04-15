@@ -13,14 +13,22 @@ const camposProduto = [
 ];
 
 export default function CadastroProduto() {
-  const [produto, setProduto] = useState<Produto>({ nome: '',valor: 0, quantidade: 0, descricao: '',categoria: '' });
+  const [produto, setProduto] = useState<Produto>({usuarioId: '', nome: '', valor: 0, quantidade: 0, descricao: '', categoria: '' });
 
   const handleSubmit = async (evento: React.FormEvent) => {
     evento.preventDefault();
+    const idUsuario = sessionStorage.getItem('id_usuario') || '';
+
+    const produtoParaCadastro = {
+      ...produto,
+      usuarioId: idUsuario,
+    };
+
     try {
-      await cadastrarProduto(produto);
+      console.log(produtoParaCadastro);
+      await cadastrarProduto(produtoParaCadastro);
       alert('Produto cadastrado!');
-      setProduto({ nome: '',valor: 0, quantidade: 0, descricao: '', categoria: '' });
+      setProduto({ usuarioId: '', nome: '', valor: 0, quantidade: 0, descricao: '', categoria: '' });
     } catch (err) {
       alert('Erro ao cadastrar produto');
     }

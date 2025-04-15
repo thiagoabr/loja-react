@@ -6,7 +6,7 @@ export const api = axios.create({
   baseURL: API_URL,
 });
 
-// Interceptor para incluir token nas requisições
+
 api.interceptors.request.use((config) => {
   const token = sessionStorage.getItem('token_acesso');
   if (token) {

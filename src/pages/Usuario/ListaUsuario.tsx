@@ -20,7 +20,6 @@ export default function ListaUsuarios() {
     carregarUsuarios();
   }, []);
 
-
   return (
     <div className={style.listaUsuarios}>
       <h1>Lista de Usuários</h1>

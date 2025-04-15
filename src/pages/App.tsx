@@ -43,7 +43,7 @@ export default function App() {
             </RotaPrivada>
           } />
 
-          <Route path="*" element={<Autenticacao />} /> {/* fallback */}
+          <Route path="*" element={<Autenticacao />} /> {}
         </Routes>
       </div>
     </Router>
