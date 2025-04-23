@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FormularioBase from '../../components/FormularioBase';
 import { Usuario } from '../../types/usuario.type';
 import { CampoFormulario } from '../../types/formularioBase.type';
 import { cadastrarUsuario } from '../../services/usuario.service';
+import { useRecoilState } from 'recoil';
+import { usuarioAtom } from '../../atoms/usuarioAtom';
 
 const campos = [
   { nome: 'nome', tipo: 'text', label: 'Nome', placeholder: 'Nome do usuário', required: true },
@@ -11,14 +13,14 @@ const campos = [
 ];
 
 export default function CadastroUsuario() {
-  const [usuario, setUsuario] = useState({ nome: '', email: '', senha: '' });
+  const [usuario, setUsuario] = useRecoilState(usuarioAtom);
 
   const handleSubmit = async (evento: React.FormEvent) => {
     evento.preventDefault();
     try {
       await cadastrarUsuario(usuario);
       alert('Usuário cadastrado!');
-      setUsuario({ nome: '', email: '', senha: '' });
+      setUsuario({id: 0, nome: '', email: '', senha: '' });
     } catch (err) {
       alert('Erro ao cadastrar usuário');
     }

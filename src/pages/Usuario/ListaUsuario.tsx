@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import style from './Usuario.module.scss';
 import { listarUsuarios } from '../../services/usuario.service';
+import { useRecoilState } from 'recoil';
+import { listaUsuarioAtom } from '../../atoms/listaUsuarioAtom';
 import { Usuario } from '../../types/usuario.type';
 
 export default function ListaUsuarios() {
-  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
+  const [usuarios, setUsuarios] = useRecoilState(listaUsuarioAtom);
 
   useEffect(() => {
     async function carregarUsuarios() {
@@ -18,7 +20,7 @@ export default function ListaUsuarios() {
     }
 
     carregarUsuarios();
-  }, []);
+  }, [setUsuarios]);
 
   return (
     <div className={style.listaUsuarios}>
@@ -32,7 +34,7 @@ export default function ListaUsuarios() {
             </tr>
           </thead>
           <tbody>
-            {usuarios.map((usuario: any) => (
+            {usuarios.map((usuario) => (
               <tr key={usuario.id}>
                 <td>{usuario.nome}</td>
                 <td>{usuario.email}</td>
