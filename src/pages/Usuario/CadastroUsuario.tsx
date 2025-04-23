@@ -20,7 +20,7 @@ export default function CadastroUsuario() {
     try {
       await cadastrarUsuario(usuario);
       alert('Usuário cadastrado!');
-      setUsuario({id: 0, nome: '', email: '', senha: '' });
+      setUsuario({ nome: '', email: '', senha: '' });
     } catch (err) {
       alert('Erro ao cadastrar usuário');
     }

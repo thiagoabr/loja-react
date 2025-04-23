@@ -34,7 +34,7 @@ export default function ListaUsuarios() {
             </tr>
           </thead>
           <tbody>
-            {usuarios.map((usuario) => (
+            {usuarios.map((usuario: any) => (
               <tr key={usuario.id}>
                 <td>{usuario.nome}</td>
                 <td>{usuario.email}</td>
